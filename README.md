@@ -1,6 +1,6 @@
 # console-games
 
-A C project in which you can play some of your classic arcade video games from the '80s such as Pong, Snake, Space Invaders, and Tetris on the terminal.
+A C project in which you can play Pong on the terminal.
 
 
 
@@ -21,12 +21,3 @@ test
     <img src="https://github.com/arasgungore/console-games/blob/main/Gameplay/space_invaders_gameplay.gif" width="800">
     <img src="https://github.com/arasgungore/console-games/blob/main/Gameplay/tetris_gameplay.gif" width="800">
 </p>
-
-
-
-## Author
-
-👤 **Aras Güngöre**
-
-* LinkedIn: [@arasgungore](https://www.linkedin.com/in/arasgungore)
-* GitHub: [@arasgungore](https://github.com/arasgungore)
