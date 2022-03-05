@@ -110,7 +110,7 @@ void UpdateFrame1() {
 					exit(0);
 			}
 		}
-		if(!(i%3)) {				// the ball will move in every 3 frames
+		if(!(i%6)) {				// the ball will move in every 6 frames
 			MoveBall();
 			ChangeBallDirection();
 		}
