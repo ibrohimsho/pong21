@@ -17,11 +17,11 @@ typedef enum {
 	RIGHT_UP, LEFT_UP, RIGHT_DOWN, LEFT_DOWN
 } BallDirection;
 
-#define PONG_BOARD_WIDTH 60
-#define PONG_BOARD_HEIGHT 20
-#define PADDLE_1_LENGTH 5
-#define PADDLE_2_LENGTH 5
-#define END_SCORE 11		// game ends if a player reaches this score
+#define PONG_BOARD_WIDTH 80
+#define PONG_BOARD_HEIGHT 25
+#define PADDLE_1_LENGTH 3
+#define PADDLE_2_LENGTH 3
+#define END_SCORE 21		// game ends if a player reaches this score
 
 Player player1 = (Player){11, (PONG_BOARD_HEIGHT-PADDLE_1_LENGTH)/2 + 6, 0}, player2 = (Player){PONG_BOARD_WIDTH + 9, (PONG_BOARD_HEIGHT - PADDLE_2_LENGTH)/2 + 6, 0};
 Ball ball = (Ball){PONG_BOARD_WIDTH/2 + 10, PONG_BOARD_HEIGHT/2 + 5, RIGHT_DOWN};
@@ -60,8 +60,8 @@ void UpdateFrame1() {
 		if(kbhit()) {				// FPS (frames per second):  1000 (milliseconds in second) / 16 (time interval between frames in milliseconds) = 62.5
 			char key = getch();	
 			switch(key) {
-				case 'W':			// if hit 'W', move player 1's paddle up by one unit
-				case 'w':
+				case 'A':			// if hit 'Q', move player 1's paddle up by one unit
+				case 'a':
 					if(player1.y > 6) {
 						MoveCursorToXY(player1.x, player1.y + PADDLE_1_LENGTH - 1);
 						printf(" ");
@@ -69,8 +69,8 @@ void UpdateFrame1() {
 						printf("%c", 219);
 					}
 					break;	
-				case 'S':			// if hit 'S', move player 1's paddle down by one unit
-				case 's':
+				case 'Z':			// if hit 'A', move player 1's paddle down by one unit
+				case 'z':
 					if(player1.y + PADDLE_1_LENGTH < 5 + PONG_BOARD_HEIGHT) {
 						MoveCursorToXY(player1.x, player1.y);
 						printf(" ");
@@ -78,7 +78,8 @@ void UpdateFrame1() {
 						printf("%c", 219);
 					}
 					break;
-				case UP_KEY:		// if hit up arrow key, move player 2's paddle up by one unit
+				case 'K':		// if hit 'K', move player 2's paddle up by one unit
+				case 'k':
 					if(player2.y > 6) {
 						MoveCursorToXY(player2.x, player2.y + PADDLE_2_LENGTH - 1);
 						printf(" ");
@@ -86,7 +87,8 @@ void UpdateFrame1() {
 						printf("%c", 219);
 					}
 					break;
-				case DOWN_KEY:		// if hit down arrow key, move player 2's paddle down by one unit
+				case 'M':
+				case 'm':		// if hit 'M', move player 2's paddle down by one unit
 					if(player2.y + PADDLE_2_LENGTH < 5 + PONG_BOARD_HEIGHT) {
 						MoveCursorToXY(player2.x, player2.y);
 						printf(" ");
