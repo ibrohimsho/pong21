@@ -221,61 +221,13 @@ void ChangeBallDirection() {
 		}
 	}
 }
-
-// records the scores of the Pong game in "Records"
-unsigned short RecordScore1() {
-	time_t mytime = time(NULL);
-	char player_name1[200], player_name2[200];
-	printf("Player 1, enter your name:\n");
-	gets(player_name1);
-	printf("Player 2, enter your name:\n");
-	gets(player_name2);
-	FILE *info = fopen("./Records/pong_record.txt", "a+");
-	fprintf(info, "Player Names: %s  -  %s\n", player_name1, player_name2);
-	fprintf(info, "Played Date: %s", ctime(&mytime));
-	fprintf(info, "Scores: %hu   -   %hu\n", player1.score, player2.score);
-	fprintf(info, "__________________________________________________\n");
-	fclose(info);
-	system("cls");
-	printf( "Press Y to see past records."
-			"\nPress R to play again."
-			"\nPress M to return to the menu."
-			"\nPress any other key to exit.");
-	char key = getch();
-	switch(key) {
-		case 'Y':
-		case 'y':
-			system("cls");
-			info = fopen("./Records/pong_record.txt", "r");
-			char ch;
-			while((ch = fgetc(info)) != EOF)
-				printf("%c", ch);
-			fclose(info);
-			break;
-		case 'R':
-		case 'r':
-			game_on_flag_1 = TRUE;
-			player1 = (Player){11, (PONG_BOARD_HEIGHT-PADDLE_1_LENGTH)/2 + 6, 0};
-			player2 = (Player){PONG_BOARD_WIDTH + 9, (PONG_BOARD_HEIGHT - PADDLE_2_LENGTH)/2 + 6, 0};
-			ball = (Ball){PONG_BOARD_WIDTH/2 + 10, PONG_BOARD_HEIGHT/2 + 5, rand()%4};
-			system("cls");
-			return TRUE;
-		case 'M':
-		case 'm':
-			return FALSE;
-	}
-	exit(0);
-}
-
 // the main function to play Pong
 void PlayPong() {
 	unsigned short play_again_flag = FALSE;
 	do {
 		OpeningScreen1();
-		LoadingScreen();
 		PrintBoard1();
 		UpdateFrame1();
-		play_again_flag = RecordScore1();
 	} while(play_again_flag);
 }
 
