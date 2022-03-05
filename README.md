@@ -1,4 +1,4 @@
-# console-games
+# Pong 21 - 05.03.2022
 
 A C project in which you can play Pong on the terminal.
 
